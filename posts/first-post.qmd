@@ -1,0 +1,14 @@
+---
+title: "First Blog Post"
+description: "My Learning Goals for this Class"
+author: "Audrey Vo"
+date: "8/27/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+First post (yayyyy!): This semester I'm excited yet terrified to be taking MicroPs. The reason I want to take this class is because I really enjoyed the E85 Labs and felt like I learned a lot from completing the work. Even though these labs were time intensive and challenging, I did feel very rewarded once it was finished and felt more confident about digital systems leaving the class. After talking to many people who have already taken E155, I do believe there is a lot more knowledge for me to gain after completing the curriculum and I'm curious to see what thsi semester has in store. I know that this class is very unique in how its set up along with the depth of content, so I know that an opportunity to take this class will be very difficult to come across again.
+
+From this class, I hope to feel very confident about approaching digital systems in the real world and be more fluent in what I learned from E85. I also hope to improve my debugging skills, whether that's the process of how I debug or my natural intuition. Finally, I hope that I am able to understand how to persevere through challenging struggles using sheer grit. In whatever field I decide to pursue in the future, I know that learning how to push through problems will be important to my success.

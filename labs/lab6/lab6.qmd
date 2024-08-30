@@ -1,0 +1,7 @@
+---
+title: "Lab 6: The Internet of Things and Serial Peripheral Interface"
+author: "Audrey Vo"
+date: "10/21/24"
+---
+
+## Lab 6

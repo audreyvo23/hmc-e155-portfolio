@@ -1,0 +1,22 @@
+---
+title: "E155 Portfolio"
+image: images/headshot.jpg
+about:
+    template: jolla
+    links:
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/audrey-vo-us23
+      - icon: github
+        text: Github 
+        href: https://github.com/audreyvo23
+
+---
+
+Hi! My name is Audrey and I'm a current Engineering student at [Harvey Mudd College](https://hmc.edu).
+
+Currently, I'm an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in "Summer Start-Up" and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project. 
+
+I'm currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.
+
+If you are interested in learning more about me, please feel free to connect on [LinkedIn](https://www.linkedin.com/in/audrey-vo-us23/).
