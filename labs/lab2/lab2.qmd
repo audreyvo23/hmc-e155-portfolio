@@ -1,7 +1,6 @@
 ---
-title: "Lab 2: Multiplexed 7-Segment Display"
 author: "Audrey Vo"
 date: "9/9/2024"
 ---
 
-## Lab 2
+## Lab 2: Multiplexed 7-Segment Display

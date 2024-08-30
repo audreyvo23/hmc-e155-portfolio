@@ -1,7 +1,6 @@
 ---
-title: "Lab 4: Digital Audio"
 author: "Audrey Vo"
 date: "9/23/24"
 ---
 
-## Lab 4
+## Lab 4: Digital Audio

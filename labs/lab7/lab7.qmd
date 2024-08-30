@@ -1,7 +1,6 @@
 ---
-title: "Lab 7: The Advanced Encryption Standard"
 author: "Audrey Vo"
 date: "10/28/24"
 ---
 
-## Lab 7
+## Lab 7: The Advanced Encryption Standard

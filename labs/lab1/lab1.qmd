@@ -1,7 +1,6 @@
 ---
-title: "Lab 1: FPGA and MCU Setup and Testing"
 author: "Audrey Vo"
 date: "9/2/24"
 ---
 
-## Lab 1
+## Lab 1: FPGA and MCU Setup and Testing

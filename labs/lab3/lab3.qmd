@@ -1,7 +1,6 @@
 ---
-title: "Lab 3: Keypad Scanner"
 author: "Audrey Vo"
 date: "9/16/24"
 ---
 
-## Lab 3
+## Lab 3: Keypad Scanner
