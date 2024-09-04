@@ -44,10 +44,8 @@ Finally, the pins from the FPGA needed to be correctly assigned to the switches,
 
 : Pin assignment to System Verilog variables
 
-![LED pin connection](images/led.jpg)
+![Full schematic with Led, Switch, and 7-segment display pin connections](images/fullschematic.png)
 
-
-![7-segment display pin connection](images/sevenSegment.jpg)
 
 ## Testing Approach
 In order to test the design, the System Verilog code was opened in ModelSim. The values of input s can be forced to any binary combination, and the output from the code could be seen in the Wave view. Upon doing so, I could see that the output I was receving from the forced inputs were the desired values. A testbench was also created to check that there were no errors in my logic.
