@@ -9,7 +9,7 @@
 <meta name="author" content="Audrey Vo">
 <meta name="dcterms.date" content="2024-09-02">
 
-<title>lab1 – E155 Portfolio</title>
+<title>Lab 1: FPGA and MCU Setup and Testing – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-1-fpga-and-mcu-setup-and-testing" id="toc-lab-1-fpga-and-mcu-setup-and-testing" class="nav-link active" data-scroll-target="#lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</a></li>
+  <li><a href="#main-goals" id="toc-main-goals" class="nav-link active" data-scroll-target="#main-goals">Main Goals</a></li>
+  <li><a href="#design-approach" id="toc-design-approach" class="nav-link" data-scroll-target="#design-approach">Design Approach</a>
+  <ul class="collapse">
+  <li><a href="#led-design" id="toc-led-design" class="nav-link" data-scroll-target="#led-design">LED Design</a></li>
+  <li><a href="#segment-display-design" id="toc-segment-display-design" class="nav-link" data-scroll-target="#segment-display-design">7 Segment Display Design</a></li>
+  <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
+  </ul></li>
+  <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a></li>
+  <li><a href="#design-requirements" id="toc-design-requirements" class="nav-link" data-scroll-target="#design-requirements">Design Requirements</a></li>
   </ul>
 </nav>
     </div>
@@ -162,6 +170,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Lab 1: FPGA and MCU Setup and Testing</h1>
 </div>
 
 
@@ -190,8 +199,127 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-1-fpga-and-mcu-setup-and-testing" class="level2">
-<h2 class="anchored" data-anchor-id="lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</h2>
+<p>Number of Hours Spent on Lab: 14 hours</p>
+<section id="main-goals" class="level2">
+<h2 class="anchored" data-anchor-id="main-goals">Main Goals</h2>
+<p>The main goals of this lab was to assemble the development board and test out the MCU and FPGA boards. In addition, an FPGA design was created in System Verilog to control 3 LEDs on the board and a 7-segement display. The LEDs and 7-segement display behavior is based on input of the switches on the board. As a result, the 7-segment display needed to be interfaced to the FPGA board in order to work as desired.</p>
+</section>
+<section id="design-approach" class="level2">
+<h2 class="anchored" data-anchor-id="design-approach">Design Approach</h2>
+<section id="led-design" class="level3">
+<h3 class="anchored" data-anchor-id="led-design">LED Design</h3>
+<p>In order to design the project so that the LEDs worked properly, I recognized that one of the led[1] is controlled by an AND gate and the second led[0] is controlled by an XOR gate of the switch values. Led[2] needed to blink at 2.4 Hz using an internal high-speed oscillator. By using the starter code provided in the fpga_dev_board_test file, a new maximum counter value needed to be calculated. Since the internal oscillator is running at 48 MHz, we get the number of counts to be 10M to get an led blinking at 2.4 MHz assuming we want a 50% duty cycle. An additional variable needed to be created in order to check if the led should be turned on or off every time the counter gets to 10M.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/counts.jpg" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the number of counts</figcaption>
+</figure>
+</div>
+</section>
+<section id="segment-display-design" class="level3">
+<h3 class="anchored" data-anchor-id="segment-display-design">7 Segment Display Design</h3>
+<p>In order to design the 7-segment display, I had to use a series of case statement for the 16 different outputs to be displayed based on the switches in a separate submodule. It was important to set pin 3 on the display to the 3.3 V so that it is always on. Thus, the segement’s cathode will turn the segement on when it is set to 0. Each case statement set the output segement values to 0 when that segement should be turned on based on what binary value was currently set on the input switches. This code was written in a separate file but was called in the same file that controlled the 3 Leds. In order to wire the 7-segment display, the various pins that controlled the display were connected to the FPGA board using 240 Ohm resistors in order to achieve 10 mA of current.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/resistor.jpg" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the resistor value for the 7 segement display</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/design.jpg" class="img-fluid figure-img"></p>
+<figcaption>Block Diagram of System Verilog module</figcaption>
+</figure>
+</div>
+</section>
+<section id="pin-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="pin-assignment">Pin Assignment</h3>
+<p>Finally, the pins from the FPGA needed to be correctly assigned to the switches, Leds, and 7-segment display on the board. The s, seg, and led variables defined in System Verilog were assigned to physical pins on the board shown as the following:</p>
+<table class="caption-top table">
+<caption>Pin assignment to System Verilog variables</caption>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th style="text-align: left;">pin #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>s[0]</td>
+<td style="text-align: left;">37</td>
+</tr>
+<tr class="even">
+<td>s[1]</td>
+<td style="text-align: left;">31</td>
+</tr>
+<tr class="odd">
+<td>s[2]</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr class="even">
+<td>s[3]</td>
+<td style="text-align: left;">32</td>
+</tr>
+<tr class="odd">
+<td>led[0]</td>
+<td style="text-align: left;">42</td>
+</tr>
+<tr class="even">
+<td>led[1]</td>
+<td style="text-align: left;">38</td>
+</tr>
+<tr class="odd">
+<td>led[2]</td>
+<td style="text-align: left;">28</td>
+</tr>
+<tr class="even">
+<td>seg[0]</td>
+<td style="text-align: left;">38</td>
+</tr>
+<tr class="odd">
+<td>seg[1]</td>
+<td style="text-align: left;">28</td>
+</tr>
+<tr class="even">
+<td>seg[2]</td>
+<td style="text-align: left;">38</td>
+</tr>
+<tr class="odd">
+<td>seg[3]</td>
+<td style="text-align: left;">28</td>
+</tr>
+<tr class="even">
+<td>seg[0]</td>
+<td style="text-align: left;">38</td>
+</tr>
+<tr class="odd">
+<td>seg[1]</td>
+<td style="text-align: left;">28</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fullschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Full schematic with Led, Switch, and 7-segment display pin connections</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="testing-approach" class="level2">
+<h2 class="anchored" data-anchor-id="testing-approach">Testing Approach</h2>
+<p>In order to test the design, the System Verilog code was opened in ModelSim. The values of input s can be forced to any binary combination, and the output from the code could be seen in the Wave view. Upon doing so, I could see that the output I was receving from the forced inputs were the desired values. A testbench was also created to check that there were no errors in my logic.</p>
+<p>Finally, I uploaded the code to my FPGA board, which was also connected to the 7-segment display through a ribbon cable. After toggling with the physical input switches, the desired led behavior and 7-segment display was shown. I also used an oscilloscope to measure the frequency of the third led to ensure it had the desired frequency of 2.4 Hz.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/testbench.png" class="img-fluid figure-img"></p>
+<figcaption>Testbench output for the circuit</figcaption>
+</figure>
+</div>
+</section>
+<section id="design-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="design-requirements">Design Requirements</h2>
+<p>After testing the design on both ModelSim and physically, I can confirm that it meets all the requirements.</p>
 
 
 </section>
