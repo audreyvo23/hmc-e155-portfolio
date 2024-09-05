@@ -11,7 +11,7 @@ The main goals of this lab was to assemble the development board and test out th
 ## Design Approach
 
 ### LED Design
-In order to design the project so that the LEDs worked properly, I recognized that one of the led[1] is controlled by an AND gate and the second led[0] is controlled by an XOR gate of the switch values. Led[2] needed to be blink at 2.4 Hz using an internal high-speed oscillator. By using the starter code provided in the fpga_dev_board_test file, a new maximum counter value needed to be calculated. Since the internal oscillator is running at 48 MHz, we get the number of counts to be 10M to get an led blinking at 2.4 MHz assuming we want a 50% duty cycle. An additional variable needed to be created in order to check if the led should be turned on or off every time the counter gets to 10M. 
+In order to design the project so that the LEDs worked properly, I recognized that one of the led[1] is controlled by an AND gate and the second led[0] is controlled by an XOR gate of the switch values. Led[2] needed to blink at 2.4 Hz using an internal high-speed oscillator. By using the starter code provided in the fpga_dev_board_test file, a new maximum counter value needed to be calculated. Since the internal oscillator is running at 48 MHz, we get the number of counts to be 10M to get an led blinking at 2.4 MHz assuming we want a 50% duty cycle. An additional variable needed to be created in order to check if the led should be turned on or off every time the counter gets to 10M. 
 
 ![Calculation to find the number of counts](images/counts.jpg)
 
