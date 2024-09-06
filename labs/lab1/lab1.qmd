@@ -21,7 +21,7 @@ In order to design the 7-segment display, I had to use a series of case statemen
 ![Calculation to find the resistor value for the 7 segement display](images/resistor.jpg)
 
 
-![Block Diagram of System Verilog module](images/design.jpg)
+![Block Diagram of System Verilog module](images/lab1blockdiagram.png)
 
 ### Pin Assignment
 Finally, the pins from the FPGA needed to be correctly assigned to the switches, Leds, and 7-segment display on the board. The s, seg, and led variables defined in System Verilog were assigned to physical pins on the board shown as the following:
@@ -45,7 +45,7 @@ Finally, the pins from the FPGA needed to be correctly assigned to the switches,
 
 : Pin assignment to System Verilog variables
 
-![Full schematic with Led, Switch, and 7-segment display pin connections](images/fullschematic.png)
+![Full schematic with Led, Switch, and 7-segment display pin connections](images/schematic.png)
 
 
 ## Testing Approach

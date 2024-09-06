@@ -227,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/design.jpg" class="img-fluid figure-img"></p>
+<p><img src="images/lab1blockdiagram.png" class="img-fluid figure-img"></p>
 <figcaption>Block Diagram of System Verilog module</figcaption>
 </figure>
 </div>
@@ -274,33 +274,37 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>seg[0]</td>
-<td style="text-align: left;">38</td>
+<td style="text-align: left;">47</td>
 </tr>
 <tr class="odd">
 <td>seg[1]</td>
-<td style="text-align: left;">28</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td>seg[2]</td>
-<td style="text-align: left;">38</td>
+<td style="text-align: left;">13</td>
 </tr>
 <tr class="odd">
 <td>seg[3]</td>
-<td style="text-align: left;">28</td>
+<td style="text-align: left;">20</td>
 </tr>
 <tr class="even">
-<td>seg[0]</td>
-<td style="text-align: left;">38</td>
+<td>seg[4]</td>
+<td style="text-align: left;">18</td>
 </tr>
 <tr class="odd">
-<td>seg[1]</td>
-<td style="text-align: left;">28</td>
+<td>seg[5]</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="even">
+<td>seg[6]</td>
+<td style="text-align: left;">48</td>
 </tr>
 </tbody>
 </table>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/fullschematic.png" class="img-fluid figure-img"></p>
+<p><img src="images/schematic.png" class="img-fluid figure-img"></p>
 <figcaption>Full schematic with Led, Switch, and 7-segment display pin connections</figcaption>
 </figure>
 </div>
@@ -417,7 +421,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/audreyvo23\.github\.io\/hmc-e155-portfolio\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
