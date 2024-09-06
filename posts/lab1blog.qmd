@@ -1,0 +1,18 @@
+---
+title: "Lab 1 Reflection"
+description: "FPGA and MCU Setup and Testing"
+author: "Audrey Vo"
+date: "9/5/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This lab was a great introduction for the class because a lot of the content of assembly and system verilog code was content I had learned from E85. Since it has been a year since I have taken the class, it did take me some time to go through my E85 notes and recall some of the syntax used. One new thing about this lab was definitely using GitHub. I have used GitHub once before in CS70, but the repositories were pre-made for us and easily cloned. Thus, it was definitely difficult for me at first to use, and even now I am still not completely confident on pushing/branching. I hope that this hesitancy will start to go away as I get more practice using GitHub for future labs. 
+
+From this lab, I think I'm starting to understand the perseverance and grit needed to get through MicroPs. Up until this semester, I had only heard a series of horror stories from MicroP alums, so I was very unsure if I could handle the workload this class supposedly would induce. Now that I have finished my first class, I can now personally confirm that the horror stories I had heard are true. However, I do think that the workload could possibly be managed if I keep the following thoughts in mind: 
+
+1. Ask for help when needed.
+2. Take a break when stressed and then come back later.
+3. Struggling is unfortunately a part of the learning process.
