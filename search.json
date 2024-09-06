@@ -4,11 +4,25 @@
     "href": "blog.html",
     "title": "E155 Blog",
     "section": "",
-    "text": "First Blog Post\n\n\n\n\n\nMy Learning Goals for this Class\n\n\n\n\n\nAug 27, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\nNo matching items"
+    "text": "Lab 1 Reflection\n\n\n\n\n\nFPGA and MCU Setup and Testing\n\n\n\n\n\nSep 5, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Blog Post\n\n\n\n\n\nMy Learning Goals for this Class\n\n\n\n\n\nAug 27, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
+  },
+  {
+    "objectID": "posts/lab1blog.html",
+    "href": "posts/lab1blog.html",
+    "title": "Lab 1 Reflection",
+    "section": "",
+    "text": "This lab was a great introduction for the class because a lot of the content of assembly and system verilog code was content I had learned from E85. Since it has been a year since I have taken the class, it did take me some time to go through my E85 notes and recall some of the syntax used. One new thing about this lab was definitely using GitHub. I have used GitHub once before in CS70, but the repositories were pre-made for us and easily cloned. Thus, it was definitely difficult for me at first to use, and even now I am still not completely confident on pushing/branching. I hope that this hesitancy will start to go away as I get more practice using GitHub for future labs.\nFrom this lab, I think I’m starting to understand the perseverance and grit needed to get through MicroPs. Up until this semester, I had only heard a series of horror stories from MicroP alums, so I was very unsure if I could handle the workload this class supposedly would induce. Now that I have finished my first class, I can now personally confirm that the horror stories I had heard are true. However, I do think that the workload could possibly be managed if I keep the following thoughts in mind:\n\nAsk for help when needed.\nTake a break when stressed and then come back later.\nStruggling is unfortunately a part of the learning process."
+  },
+  {
+    "objectID": "labs/lab7/images/lab1.html",
+    "href": "labs/lab7/images/lab1.html",
     "title": "E155 Portfolio",
     "section": "",
     "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
@@ -47,13 +61,6 @@
     "title": "Lab 1: FPGA and MCU Setup and Testing",
     "section": "Design Requirements",
     "text": "Design Requirements\nAfter testing the design on both ModelSim and physically, I can confirm that it meets all the requirements."
-  },
-  {
-    "objectID": "labs/lab7/images/lab1.html",
-    "href": "labs/lab7/images/lab1.html",
-    "title": "E155 Portfolio",
-    "section": "",
-    "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
   },
   {
     "objectID": "posts/first-post.html",
