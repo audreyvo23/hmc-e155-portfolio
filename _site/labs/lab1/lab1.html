@@ -222,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/resistor.jpg" class="img-fluid figure-img"></p>
-<figcaption>Calculation to find the resistor value for the 7 segement display</figcaption>
+<figcaption>Calculation to find the resistor value for the 7 segment display</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -421,7 +421,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/audreyvo23\.github\.io\/hmc-e155-portfolio\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

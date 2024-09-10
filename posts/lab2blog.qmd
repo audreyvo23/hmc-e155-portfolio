@@ -1,0 +1,18 @@
+---
+title: "Lab 2 Reflection"
+description: "Multiplexed 7-Segment Display"
+author: "Audrey Vo"
+date: "9/9/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+In this week's lab, I learned how to use a mux and transistor to drive 2 seven segment displays at once. Something I really struggled with during the lab was understanding how the transistor worked to control whether or not current flowed through, and why the transistor was needed. I have learned about transistors before in E84 and E85, but I had only understood it from a high level as a "switch". I never understood how that switch would actually be implemented, so this lab forced me to do so in order for my circuit to function as desired. 
+
+Something I also took away from this lab was the importance of neat wiring. Since this lab required a lot of wires and circuitry, I was halfway through wiring everything up when I realized how messy the final product was going to be. As a result, a lot of wire could easily be unattached as I'm moving around the board and it would be more difficult to debug or spot. In the future, I'm going to pay more attention about planning out my board layout before I start wiring. 
+
+![Messy Wiring from Lab 2 :()](images/lab2blog.png)
+
+Finally, I learned how to make testbenches without testvectors. Initially, I was having trouble trying to make testvectors since the output of the module would be constantly oscillating. However, after talking to the tutors, they emphasized that the point of a testbench is to ensure that the modules work as desired, and can be easily done without testvectors. This was my first time making a testbench without testvectors, and I will continue to do so for future labs. 
