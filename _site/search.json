@@ -14,55 +14,6 @@
     "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
   },
   {
-    "objectID": "posts/lab1blog.html",
-    "href": "posts/lab1blog.html",
-    "title": "Lab 1 Reflection",
-    "section": "",
-    "text": "This lab was a great introduction for the class because a lot of the content of assembly and system verilog code was content I had learned from E85. Since it has been a year since I have taken the class, it did take me some time to go through my E85 notes and recall some of the syntax used. One new thing about this lab was definitely using GitHub. I have used GitHub once before in CS70, but the repositories were pre-made for us and easily cloned. Thus, it was definitely difficult for me at first to use, and even now I am still not completely confident on pushing/branching. I hope that this hesitancy will start to go away as I get more practice using GitHub for future labs.\nFrom this lab, I think I’m starting to understand the perseverance and grit needed to get through MicroPs. Up until this semester, I had only heard a series of horror stories from MicroP alums, so I was very unsure if I could handle the workload this class supposedly would induce. Now that I have finished my first class, I can now personally confirm that the horror stories I had heard are true. However, I do think that the workload could possibly be managed if I keep the following thoughts in mind:\n\nAsk for help when needed.\nTake a break when stressed and then come back later.\nStruggling is unfortunately a part of the learning process."
-  },
-  {
-    "objectID": "labs/lab7/images/lab1.html",
-    "href": "labs/lab7/images/lab1.html",
-    "title": "E155 Portfolio",
-    "section": "",
-    "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html",
-    "href": "labs/lab1/lab1.html",
-    "title": "Lab 1: FPGA and MCU Setup and Testing",
-    "section": "",
-    "text": "Number of Hours Spent on Lab: 14 hours"
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#main-goals",
-    "href": "labs/lab1/lab1.html#main-goals",
-    "title": "Lab 1: FPGA and MCU Setup and Testing",
-    "section": "Main Goals",
-    "text": "Main Goals\nThe main goals of this lab was to assemble the development board and test out the MCU and FPGA boards. In addition, an FPGA design was created in System Verilog to control 3 LEDs on the board and a 7-segement display. The LEDs and 7-segement display behavior is based on input of the switches on the board. As a result, the 7-segment display needed to be interfaced to the FPGA board in order to work as desired."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#design-approach",
-    "href": "labs/lab1/lab1.html#design-approach",
-    "title": "Lab 1: FPGA and MCU Setup and Testing",
-    "section": "Design Approach",
-    "text": "Design Approach\n\nLED Design\nIn order to design the project so that the LEDs worked properly, I recognized that one of the led[1] is controlled by an AND gate and the second led[0] is controlled by an XOR gate of the switch values. Led[2] needed to blink at 2.4 Hz using an internal high-speed oscillator. By using the starter code provided in the fpga_dev_board_test file, a new maximum counter value needed to be calculated. Since the internal oscillator is running at 48 MHz, we get the number of counts to be 10M to get an led blinking at 2.4 MHz assuming we want a 50% duty cycle. An additional variable needed to be created in order to check if the led should be turned on or off every time the counter gets to 10M.\n\n\n\nCalculation to find the number of counts\n\n\n\n\n7 Segment Display Design\nIn order to design the 7-segment display, I had to use a series of case statement for the 16 different outputs to be displayed based on the switches in a separate submodule. It was important to set pin 3 on the display to the 3.3 V so that it is always on. Thus, the segement’s cathode will turn the segement on when it is set to 0. Each case statement set the output segement values to 0 when that segement should be turned on based on what binary value was currently set on the input switches. This code was written in a separate file but was called in the same file that controlled the 3 Leds. In order to wire the 7-segment display, the various pins that controlled the display were connected to the FPGA board using 240 Ohm resistors in order to achieve 10 mA of current.\n\n\n\nCalculation to find the resistor value for the 7 segment display\n\n\n\n\n\nBlock Diagram of System Verilog module\n\n\n\n\nPin Assignment\nFinally, the pins from the FPGA needed to be correctly assigned to the switches, Leds, and 7-segment display on the board. The s, seg, and led variables defined in System Verilog were assigned to physical pins on the board shown as the following:\n\nPin assignment to System Verilog variables\n\n\nvariable\npin #\n\n\n\n\ns[0]\n37\n\n\ns[1]\n31\n\n\ns[2]\n35\n\n\ns[3]\n32\n\n\nled[0]\n42\n\n\nled[1]\n38\n\n\nled[2]\n28\n\n\nseg[0]\n47\n\n\nseg[1]\n2\n\n\nseg[2]\n13\n\n\nseg[3]\n20\n\n\nseg[4]\n18\n\n\nseg[5]\n12\n\n\nseg[6]\n48\n\n\n\n\n\n\nFull schematic with Led, Switch, and 7-segment display pin connections"
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#testing-approach",
-    "href": "labs/lab1/lab1.html#testing-approach",
-    "title": "Lab 1: FPGA and MCU Setup and Testing",
-    "section": "Testing Approach",
-    "text": "Testing Approach\nIn order to test the design, the System Verilog code was opened in ModelSim. The values of input s can be forced to any binary combination, and the output from the code could be seen in the Wave view. Upon doing so, I could see that the output I was receving from the forced inputs were the desired values. A testbench was also created to check that there were no errors in my logic.\nFinally, I uploaded the code to my FPGA board, which was also connected to the 7-segment display through a ribbon cable. After toggling with the physical input switches, the desired led behavior and 7-segment display was shown. I also used an oscilloscope to measure the frequency of the third led to ensure it had the desired frequency of 2.4 Hz.\n\n\n\nTestbench output for the circuit"
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#design-requirements",
-    "href": "labs/lab1/lab1.html#design-requirements",
-    "title": "Lab 1: FPGA and MCU Setup and Testing",
-    "section": "Design Requirements",
-    "text": "Design Requirements\nAfter testing the design on both ModelSim and physically, I can confirm that it meets all the requirements."
-  },
-  {
     "objectID": "posts/first-post.html",
     "href": "posts/first-post.html",
     "title": "First Blog Post",
@@ -70,25 +21,11 @@
     "text": "First post (yayyyy!): This semester I’m excited yet terrified to be taking MicroPs. The reason I want to take this class is because I really enjoyed the E85 Labs and felt like I learned a lot from completing the work. Even though these labs were time intensive and challenging, I did feel very rewarded once it was finished and felt more confident about digital systems leaving the class. After talking to many people who have already taken E155, I do believe there is a lot more knowledge for me to gain after completing the curriculum and I’m curious to see what thsi semester has in store. I know that this class is very unique in how its set up along with the depth of content, so I know that an opportunity to take this class will be very difficult to come across again.\nFrom this class, I hope to feel very confident about approaching digital systems in the real world and be more fluent in what I learned from E85. I also hope to improve my debugging skills, whether that’s the process of how I debug or my natural intuition. Finally, I hope that I am able to understand how to persevere through challenging struggles using sheer grit. In whatever field I decide to pursue in the future, I know that learning how to push through problems will be important to my success."
   },
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "E155 Website"
-  },
-  {
-    "objectID": "resources.html#helpful-links",
-    "href": "resources.html#helpful-links",
-    "title": "Resources",
-    "section": "",
-    "text": "E155 Website"
-  },
-  {
     "objectID": "labs/lab2/lab2.html",
     "href": "labs/lab2/lab2.html",
     "title": "Lab 2: Multiplexed 7-Segment Display",
     "section": "",
-    "text": "Number of Hours Spent on Lab: 11 hours"
+    "text": "Number of Hours Spent on Lab: 11 hours\nGitHub Lab 2 Files"
   },
   {
     "objectID": "labs/lab2/lab2.html#main-goals",
@@ -119,10 +56,73 @@
     "text": "Design Requirements\nAfter testing the design on both ModelSim and physically, I can confirm that it meets all the requirements."
   },
   {
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "",
+    "text": "Number of Hours Spent on Lab: 14 hours\nGitHub Lab 1 Files"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#main-goals",
+    "href": "labs/lab1/lab1.html#main-goals",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Main Goals",
+    "text": "Main Goals\nThe main goals of this lab was to assemble the development board and test out the MCU and FPGA boards. In addition, an FPGA design was created in System Verilog to control 3 LEDs on the board and a 7-segement display. The LEDs and 7-segement display behavior is based on input of the switches on the board. As a result, the 7-segment display needed to be interfaced to the FPGA board in order to work as desired."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design-approach",
+    "href": "labs/lab1/lab1.html#design-approach",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Design Approach",
+    "text": "Design Approach\n\nLED Design\nIn order to design the project so that the LEDs worked properly, I recognized that one of the led[1] is controlled by an AND gate and the second led[0] is controlled by an XOR gate of the switch values. Led[2] needed to blink at 2.4 Hz using an internal high-speed oscillator. By using the starter code provided in the fpga_dev_board_test file, a new maximum counter value needed to be calculated. Since the internal oscillator is running at 48 MHz, we get the number of counts to be 10M to get an led blinking at 2.4 MHz assuming we want a 50% duty cycle. An additional variable needed to be created in order to check if the led should be turned on or off every time the counter gets to 10M.\n\n\n\nCalculation to find the number of counts\n\n\n\n\n7 Segment Display Design\nIn order to design the 7-segment display, I had to use a series of case statement for the 16 different outputs to be displayed based on the switches in a separate submodule. It was important to set pin 3 on the display to the 3.3 V so that it is always on. Thus, the segement’s cathode will turn the segement on when it is set to 0. Each case statement set the output segement values to 0 when that segement should be turned on based on what binary value was currently set on the input switches. This code was written in a separate file but was called in the same file that controlled the 3 Leds. In order to wire the 7-segment display, the various pins that controlled the display were connected to the FPGA board using 240 Ohm resistors in order to achieve 10 mA of current.\n\n\n\nCalculation to find the resistor value for the 7 segment display\n\n\n\n\n\nBlock Diagram of System Verilog module\n\n\n\n\nPin Assignment\nFinally, the pins from the FPGA needed to be correctly assigned to the switches, Leds, and 7-segment display on the board. The s, seg, and led variables defined in System Verilog were assigned to physical pins on the board shown as the following:\n\nPin assignment to System Verilog variables\n\n\nvariable\npin #\n\n\n\n\ns[0]\n37\n\n\ns[1]\n31\n\n\ns[2]\n35\n\n\ns[3]\n32\n\n\nled[0]\n42\n\n\nled[1]\n38\n\n\nled[2]\n28\n\n\nseg[0]\n47\n\n\nseg[1]\n2\n\n\nseg[2]\n13\n\n\nseg[3]\n20\n\n\nseg[4]\n18\n\n\nseg[5]\n12\n\n\nseg[6]\n48\n\n\n\n\n\n\nFull schematic with Led, Switch, and 7-segment display pin connections"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#testing-approach",
+    "href": "labs/lab1/lab1.html#testing-approach",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Testing Approach",
+    "text": "Testing Approach\nIn order to test the design, the System Verilog code was opened in ModelSim. The values of input s can be forced to any binary combination, and the output from the code could be seen in the Wave view. Upon doing so, I could see that the output I was receving from the forced inputs were the desired values. A testbench was also created to check that there were no errors in my logic.\nFinally, I uploaded the code to my FPGA board, which was also connected to the 7-segment display through a ribbon cable. After toggling with the physical input switches, the desired led behavior and 7-segment display was shown. I also used an oscilloscope to measure the frequency of the third led to ensure it had the desired frequency of 2.4 Hz.\n\n\n\nTestbench output for the circuit"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design-requirements",
+    "href": "labs/lab1/lab1.html#design-requirements",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Design Requirements",
+    "text": "Design Requirements\nAfter testing the design on both ModelSim and physically, I can confirm that it meets all the requirements."
+  },
+  {
+    "objectID": "labs/lab7/images/lab1.html",
+    "href": "labs/lab7/images/lab1.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
+  },
+  {
+    "objectID": "posts/lab1blog.html",
+    "href": "posts/lab1blog.html",
+    "title": "Lab 1 Reflection",
+    "section": "",
+    "text": "This lab was a great introduction for the class because a lot of the content of assembly and system verilog code was content I had learned from E85. Since it has been a year since I have taken the class, it did take me some time to go through my E85 notes and recall some of the syntax used. One new thing about this lab was definitely using GitHub. I have used GitHub once before in CS70, but the repositories were pre-made for us and easily cloned. Thus, it was definitely difficult for me at first to use, and even now I am still not completely confident on pushing/branching. I hope that this hesitancy will start to go away as I get more practice using GitHub for future labs.\nFrom this lab, I think I’m starting to understand the perseverance and grit needed to get through MicroPs. Up until this semester, I had only heard a series of horror stories from MicroP alums, so I was very unsure if I could handle the workload this class supposedly would induce. Now that I have finished my first class, I can now personally confirm that the horror stories I had heard are true. However, I do think that the workload could possibly be managed if I keep the following thoughts in mind:\n\nAsk for help when needed.\nTake a break when stressed and then come back later.\nStruggling is unfortunately a part of the learning process."
+  },
+  {
     "objectID": "posts/lab2blog.html",
     "href": "posts/lab2blog.html",
     "title": "Lab 2 Reflection",
     "section": "",
     "text": "In this week’s lab, I learned how to use a mux and transistor to drive 2 seven segment displays at once. Something I really struggled with during the lab was understanding how the transistor worked to control whether or not current flowed through, and why the transistor was needed. I have learned about transistors before in E84 and E85, but I had only understood it from a high level as a “switch”. I never understood how that switch would actually be implemented, so this lab forced me to do so in order for my circuit to function as desired.\nSomething I also took away from this lab was the importance of neat wiring. Since this lab required a lot of wires and circuitry, I was halfway through wiring everything up when I realized how messy the final product was going to be. As a result, a lot of wire could easily be unattached as I’m moving around the board and it would be more difficult to debug or spot. In the future, I’m going to pay more attention about planning out my board layout before I start wiring.\n\n\n\nMessy Wiring from Lab 2 :()\n\n\nFinally, I learned how to make testbenches without testvectors. Initially, I was having trouble trying to make testvectors since the output of the module would be constantly oscillating. However, after talking to the tutors, they emphasized that the point of a testbench is to ensure that the modules work as desired, and can be easily done without testvectors. This was my first time making a testbench without testvectors, and I will continue to do so for future labs."
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "E155 Website"
+  },
+  {
+    "objectID": "resources.html#helpful-links",
+    "href": "resources.html#helpful-links",
+    "title": "Resources",
+    "section": "",
+    "text": "E155 Website"
   }
 ]

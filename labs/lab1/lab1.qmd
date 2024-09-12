@@ -5,6 +5,8 @@ date: "9/2/24"
 ---
 Number of Hours Spent on Lab: 14 hours
 
+[GitHub Lab 1 Files](https://github.com/audreyvo23/e155-lab1)
+
 ## Main Goals
 The main goals of this lab was to assemble the development board and test out the MCU and FPGA boards. In addition, an FPGA design was created in System Verilog to control 3 LEDs on the board and a 7-segement display. The LEDs and 7-segement display behavior is based on input of the switches on the board. As a result, the 7-segment display needed to be interfaced to the FPGA board in order to work as desired. 
 

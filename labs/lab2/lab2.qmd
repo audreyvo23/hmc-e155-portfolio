@@ -6,6 +6,9 @@ date: "9/9/2024"
 
 Number of Hours Spent on Lab: 11 hours
 
+[GitHub Lab 2 Files](https://github.com/audreyvo23/e155-lab2)
+
+
 ## Main Goals
 The main goals of this lab were to use a time-multiplexing schematic to drive 2 separate 7 segement LED displays with a single set of pins on the FPGA and Verilog code. In addition, a transistor was required to use in order to drive larger currents from the FPGA pins to power the LED displays. An additional LED display was also used to report the sum of the 2 7 segement LED displays in binary format. Finally, a function testbench needed to be created in ModelSim to test the System Verilog code and ensure that each of the modules created worked as expected.
 
