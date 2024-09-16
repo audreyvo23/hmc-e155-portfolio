@@ -65,7 +65,7 @@ Finally, the pins from the FPGA needed to be correctly assigned to the switches,
 : Pin assignment to System Verilog variables
 
 
-![Physical Circuit Schematic for Entire System](images/lab2schematic.jpg)
+![Physical Circuit Schematic for Entire System](images/lab2schematic3.png)
 
 
 ## Testing Approach
