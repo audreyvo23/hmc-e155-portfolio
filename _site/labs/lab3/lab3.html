@@ -161,6 +161,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#segment-and-transistor-circuit-design" id="toc-segment-and-transistor-circuit-design" class="nav-link" data-scroll-target="#segment-and-transistor-circuit-design">7 Segment and Transistor Circuit Design</a></li>
   <li><a href="#keypad-circuit-design" id="toc-keypad-circuit-design" class="nav-link" data-scroll-target="#keypad-circuit-design">Keypad Circuit Design</a></li>
   <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
+  <li><a href="#tradeoffs-of-chosen-design" id="toc-tradeoffs-of-chosen-design" class="nav-link" data-scroll-target="#tradeoffs-of-chosen-design">Tradeoffs of Chosen Design</a></li>
   </ul></li>
   <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a>
   <ul class="collapse">
@@ -218,6 +219,212 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="fsm-design">FSM Design</h3>
 <p>In order to detect which row and column were turned on during a button pressed, all of the rows could not be turned on at once because then several keys would be viewed as on with a single button press. Thus, the idea was to scan through the rows during each clock cycle, and then take the columns as an input to the FPGA. Whenever a column is detected on, the FPGA can then figure out which row was powered on that time and then decode the corresponding key value.</p>
 <p>An FSM was created to keep track of all of the states. States 0, 1, 2, and 3 are cycled through when the button is off, until a button is turned on. The button is turned on when any of the column inputs are detected to be on. When a button is turned on, the next state will be a separate state (represented by States 4, 6, 8, 10) that will be stayed at for one clock cycle. The enable is represented when any of these states are turned on, because it will be used later to track when the digits on the keypad need to be shifted. Finally, after the button is pressed, if it is still being pressed or held down after the first clock cycle, it will be moved to a holding state represented by States 5, 7, 9, and 11. In addition, only one button click should be detected, which is why these states exist, and the program will stay on these states until the button is turned off.</p>
+<div id="tbl-panel" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: State Transition Table
+</figcaption>
+<div aria-describedby="tbl-panel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-third" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-third-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Current State
+</figcaption>
+<div aria-describedby="tbl-third-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Current State</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">S0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-first" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Next State
+</figcaption>
+<div aria-describedby="tbl-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">B = 1</th>
+<th style="text-align: left;">B = 0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">S10</td>
+<td style="text-align: left;">S1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S4</td>
+<td style="text-align: left;">S2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S6</td>
+<td style="text-align: left;">S3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S8</td>
+<td style="text-align: left;">S0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S5</td>
+<td style="text-align: left;">S1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S5</td>
+<td style="text-align: left;">S1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S7</td>
+<td style="text-align: left;">S2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S7</td>
+<td style="text-align: left;">S2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S9</td>
+<td style="text-align: left;">S3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S9</td>
+<td style="text-align: left;">S3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S11</td>
+<td style="text-align: left;">S0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S11</td>
+<td style="text-align: left;">S0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-second" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Output
+</figcaption>
+<div aria-describedby="tbl-second-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">B = 1</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">R0 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R1 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R3 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R1 = 1</td>
+<td style="text-align: left;">en = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R1 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 = 1</td>
+<td style="text-align: left;">en = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R3 = 1</td>
+<td style="text-align: left;">en = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R3 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R0 = 1</td>
+<td style="text-align: left;">en = 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R0 = 1</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>//See <a href="#tbl-panel" class="quarto-xref">Table&nbsp;1</a> for details, especially <a href="#tbl-second" class="quarto-xref">Table&nbsp;1 (c)</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lab3fsm.png" class="img-fluid figure-img"></p>
@@ -346,6 +553,11 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Physical Circuit Schematic for Entire System</figcaption>
 </figure>
 </div>
+</section>
+<section id="tradeoffs-of-chosen-design" class="level3">
+<h3 class="anchored" data-anchor-id="tradeoffs-of-chosen-design">Tradeoffs of Chosen Design</h3>
+<p>The design I created involved creating a lot of modules for each of the design’s functions. This made it easy for me to test and debug each module individually, and also understand the process flow of the circuit design. However, when I was testing the modules all together, I had a lot of difficulty tracking down which module the issue would arise in because there were a lot of internal variables being passed through each module.</p>
+<p>Another design choice I made was the FSM design. The FSM design was intuitive because it used a lot of the concepts we used in class such as how to get a pulse for only one clock cycle. I also understood what was happening the FSM, so it was easier for me to implement in System Verilog. However, when I was trying to implement debouncing later, it was difficult to do so within the existing FSM, since that FSM was already fully set. Thus, I was trying to create a debouncing system that did not affect or further complicate the current FSM implemented. This definitely caused some difficulty because of the design constraints.</p>
 </section>
 </section>
 <section id="testing-approach" class="level2">

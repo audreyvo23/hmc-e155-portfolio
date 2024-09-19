@@ -1,0 +1,16 @@
+---
+title: "Lab 3 Reflection"
+description: "Keypad Scanner"
+author: "Audrey Vo"
+date: "9/9/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This lab was one of the most challenging labs I have done in my life. Before starting, I was forewarning by some tutors and now understand why. I do feel accomplished for being able to get some response from the keypad, but the majority of my time was spent on thinking and debugging. In order to understand what to implement and how, I had to really think my design out and consider numerous edge cases. Because there were many moving parts and steps, this required me to try to systematically break up the problem in smaller chunks and work on each chunk before testing everything together.
+
+The debugging for this lab required extensive use of ModelSim's waveform view. The waveforms were helpful in visualizing the output of each module, and helped me track where values were exhibiting undefined behavior. Once the simulation worked for all of the modules, I then copied the code into Lattice Radiant. However, even then, there were challenges where the hardware was still not behaving as expected because the simulation and hardware are not identical. This was definitely frustrating because it made debugging a lot harder for me. I then had to rely on oscilloscoping to get a lead on where things were going wrong. From this lab overall, I learned the importance of tackling problem systematically in smaller parts as opposed to trying to figure everything out at once. I'm sure this lesson will serve me well in future labs and problems I face outside of MicroPs. 
+
+P.S. Shoutout to Kavi for being an amazing grutor and very patient with me as I was in the trenches with the lab.

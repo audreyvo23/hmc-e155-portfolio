@@ -20,6 +20,67 @@ In order to detect which row and column were turned on during a button pressed, 
 An FSM was created to keep track of all of the states. States 0, 1, 2, and 3 are cycled through when the button is off, until a button is turned on. The button is turned on when any of the column inputs are detected to be on. When a button is turned on, the next state will be a separate state (represented by States 4, 6, 8, 10) that will be stayed at for one clock cycle. The enable is represented when any of these states are turned on, because it will be used later to track when the digits on the keypad need to be shifted. Finally, after the button is pressed, if it is still being pressed or held down after the first clock cycle, it will be moved to a holding state represented by States 5, 7, 9, and 11. 
 In addition, only one button click should be detected, which is why these states exist, and the program will stay on these states until the button is turned off. 
 
+::: {#tbl-panel layout-ncol=3}
+| Current State | 
+|---------------|
+| S0            |
+| S1            | 
+| S2            | 
+| S3            |
+| S4            | 
+| S5            | 
+| S6            |
+| S7            | 
+| S8            | 
+| S9            |
+| S10           | 
+| S11           | 
+
+: Current State {#tbl-third}
+
+| B = 1 | B = 0 |
+|-------|-------|
+| S10   | S1    | 
+| S4    | S2    | 
+| S6    | S3    | 
+| S8    | S0    | 
+| S5    | S1    | 
+| S5    | S1    | 
+| S7    | S2    | 
+| S7    | S2    |
+| S9    | S3    | 
+| S9    | S3    |  
+| S11   | S0    | 
+| S11   | S0    |  
+
+: Next State {#tbl-first}
+
+| B = 1         |
+|-------|-------|
+| R0 = 1|       | 
+| R1 = 1|       | 
+| R2 = 1|       | 
+| R3 = 1|       | 
+| R1 = 1|en = 1 |
+| R1 = 1|       |
+| R2 = 1|en = 1 |
+| R2 = 1|       |
+| R3 = 1|en =  1|
+| R3 = 1|       |
+| R0 = 1|en = 1|
+| R0 = 1|       |
+
+: Output {#tbl-second}
+
+State Transition Table
+:::
+
+//See @tbl-panel for details, especially @tbl-second.
+
+
+
+
+
 ![FSM Diagram for the Key Scanner](images/lab3fsm.png)
 
 ### System Verilog Design
@@ -75,6 +136,10 @@ Finally, the pins from the FPGA needed to be correctly assigned to the 7-segment
 
 ![Physical Circuit Schematic for Entire System](images/lab3schematic.png)
 
+### Tradeoffs of Chosen Design
+The design I created involved creating a lot of modules for each of the design's functions. This made it easy for me to test and debug each module individually, and also understand the process flow of the circuit design. However, when I was testing the modules all together, I had a lot of difficulty tracking down which module the issue would arise in because there were a lot of internal variables being passed through each module.
+
+Another design choice I made was the FSM design. The FSM design was intuitive because it used a lot of the concepts we used in class such as how to get a pulse for only one clock cycle. I also understood what was happening the FSM, so it was easier for me to implement in System Verilog. However, when I was trying to implement debouncing later, it was difficult to do so within the existing FSM, since that FSM was already fully set. Thus, I was trying to create a debouncing system that did not affect or further complicate the current FSM implemented. This definitely caused some difficulty because of the design constraints. 
 
 ## Testing Approach
 In order to test the design, the System Verilog code was opened in ModelSim. A set of additional testbench files in System Verilog were created to test each of the submodules's functionality. 
