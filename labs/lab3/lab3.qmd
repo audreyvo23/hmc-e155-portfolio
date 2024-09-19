@@ -157,12 +157,12 @@ In order to check if the keypad decoder function was working properly, a clock s
 ### Two Digit Memory Testing
 In order to check if the two digit memory function was working properly, a clock signal was generated with 10 timestep. A dut (device under test) was then instantiated calling the two digit memory function. At the start of the simulation, input values for the input switch were set to various values. Some were held for less than 50 clock cycles, while others were held for longer than 50 clock cycles. The two digit memory was supposed to take care of switch bouncing, so the waveform should show the output s1 and s2 values only capturing and switching values when the input s is held for longer than 50 clock cycles. This behavior was observed in the waveforms. Thus, the module behaved as expected.
 
-![Testbench output for Sum module](images/shiftertb.png)
+![Testbench output for Two Digit Memory module](images/shiftertb.png)
 
 ### Top Module
 Before transferring all of the code to Radiant Software, a final testbench was created for the top module that tested all of the submodules together. A dut was instantiated with the column inputs and expected output being held at various values. At one point, one of the column inputs were held for less than 50 clock cycles to test switch bouncing. The output of this waveform was the expected seven Segment output pins in binary. In the waveform, it can be seen that there are two values oscillating as expected to reflect the keypad input simulated.
 
-![Testbench output for Seven Segment Display module](images/toptb.png)
+![Testbench output for the Top Level module](images/toptb.png)
 
 
 
