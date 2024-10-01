@@ -161,6 +161,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#circuit-design" id="toc-circuit-design" class="nav-link" data-scroll-target="#circuit-design">Circuit Design</a></li>
   <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
   </ul></li>
+  <li><a href="#finished-lab" id="toc-finished-lab" class="nav-link" data-scroll-target="#finished-lab">Finished Lab</a></li>
   <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a></li>
   <li><a href="#design-requirements" id="toc-design-requirements" class="nav-link" data-scroll-target="#design-requirements">Design Requirements</a></li>
   </ul>
@@ -240,7 +241,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="pulse-width-modulator-design" class="level3">
 <h3 class="anchored" data-anchor-id="pulse-width-modulator-design">Pulse Width Modulator Design</h3>
-<p>The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. In addition, the auto-reload preload enable was set so that the ARR register is buffered. The Output Compare 1 Mode bits were set also set so that the PWM mode is set. The Capture Compare 1 Output enable and the Main Output Enable were also turned on so. Finally, the update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer. The output of this function was set to an alternate function in order to connect the timer value with the GPIO pins.</p>
+<p>The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. The 100 kHz counter clock frequency ensured that our pitch output would remain within 1 percent of the desired pitch for frequencies between 220 and 1000 Hz.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/accuracycalc.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to verify the accuracy of the output frequency</figcaption>
+</figure>
+</div>
+<p>In addition, the auto-reload preload enable was set so that the ARR register is buffered. The Output Compare 1 Mode bits were set also set so that the PWM mode is set. The Capture Compare 1 Output enable and the Main Output Enable were also turned on so. Finally, the update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer. The output of this function was set to an alternate function in order to connect the timer value with the GPIO pins.</p>
 <p>For the setPitch function, the ARR register was set to 100000/inputfrequency in order to get the desired number of counts for one period of the square wave. Knowing the maximum and minimum ARR values along wtih its relationship to the input frequency, the maximum and minimum frequency ranges can be calculated.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -294,6 +302,10 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
+</section>
+<section id="finished-lab" class="level2">
+<h2 class="anchored" data-anchor-id="finished-lab">Finished Lab</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/RmcU3kYlT80" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="testing-approach" class="level2">
 <h2 class="anchored" data-anchor-id="testing-approach">Testing Approach</h2>
