@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Audrey Vo">
-<meta name="dcterms.date" content="2024-09-23">
+<meta name="dcterms.date" content="2024-09-30">
 
-<title>lab4 – E155 Portfolio</title>
+<title>Lab 3: Keypad Scanner – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-4-digital-audio" id="toc-lab-4-digital-audio" class="nav-link active" data-scroll-target="#lab-4-digital-audio">Lab 4: Digital Audio</a></li>
+  <li><a href="#main-goals" id="toc-main-goals" class="nav-link active" data-scroll-target="#main-goals">Main Goals</a></li>
+  <li><a href="#design-approach" id="toc-design-approach" class="nav-link" data-scroll-target="#design-approach">Design Approach</a>
+  <ul class="collapse">
+  <li><a href="#delay-duration-design" id="toc-delay-duration-design" class="nav-link" data-scroll-target="#delay-duration-design">Delay Duration Design</a></li>
+  <li><a href="#pulse-width-modulator-design" id="toc-pulse-width-modulator-design" class="nav-link" data-scroll-target="#pulse-width-modulator-design">Pulse Width Modulator Design</a></li>
+  <li><a href="#circuit-design" id="toc-circuit-design" class="nav-link" data-scroll-target="#circuit-design">Circuit Design</a></li>
+  <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
+  </ul></li>
+  <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a></li>
+  <li><a href="#design-requirements" id="toc-design-requirements" class="nav-link" data-scroll-target="#design-requirements">Design Requirements</a></li>
   </ul>
 </nav>
     </div>
@@ -162,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Lab 3: Keypad Scanner</h1>
 </div>
 
 
@@ -178,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 23, 2024</p>
+      <p class="date">September 30, 2024</p>
     </div>
   </div>
   
@@ -190,8 +200,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-4-digital-audio" class="level2">
-<h2 class="anchored" data-anchor-id="lab-4-digital-audio">Lab 4: Digital Audio</h2>
+<p>Number of Hours Spent on Lab: 20 hours</p>
+<p><a href="https://github.com/audreyvo23/e155-lab4">GitHub Lab 3 Files</a></p>
+<section id="main-goals" class="level2">
+<h2 class="anchored" data-anchor-id="main-goals">Main Goals</h2>
+<p>The main goals of this lab was to drive a speaker from the MCU by enabling the I/O pins. In order to do so, the timer functionality needed to be implemented in order to create a square wave at the desired frequency/pitch and also indicate how long each note should be played for. Finally, a library from C needed to be written from scratch for the Timer to be implemented, which required getting familiar with the datasheet.</p>
+</section>
+<section id="design-approach" class="level2">
+<h2 class="anchored" data-anchor-id="design-approach">Design Approach</h2>
+<section id="delay-duration-design" class="level3">
+<h3 class="anchored" data-anchor-id="delay-duration-design">Delay Duration Design</h3>
+<p>In order to design the code for the delay, there were 2 functions written. One function intialized the delay timer, while the other function would use a timer to delay the code to the desired number of milliseconds. The value of the prescalar was sent to 39 in order to get a counting clock frequency of 100 kHz since the system’s clock is at 4 MHz when it is set to the default MSI. The counter was also enabled and set to 0 during initialization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/prescalercalc.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the prescalar value for the timer</figcaption>
+</figure>
+</div>
+<p>Next, the delay function took in a pointer to a timer along with the desired delay time. This function first set the auto-reload register to 100*input delay in order to get the desired maximum counting value before resetting when the counting clock frequency is at 100 kHz. Next, the Counter and Capture/Compare 1 Interrupt flag values were set to 0. A while loop was then created to keep running until the Capture/Compare Interrupt flag is turned on, which is when the counter has a greater value than the ARR register.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/delayarr.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the ARR value for the delay function</figcaption>
+</figure>
+</div>
+<p>Using the equations for the arr value, the maximum and minimum delay values could be found by using the maximum and minimum values that the auto-reload register could hold.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/maxarr.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the maximum delay duration</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/minarr.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the minimum delay duration</figcaption>
+</figure>
+</div>
+</section>
+<section id="pulse-width-modulator-design" class="level3">
+<h3 class="anchored" data-anchor-id="pulse-width-modulator-design">Pulse Width Modulator Design</h3>
+<p>The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. In addition, the auto-reload preload enable was set so that the ARR register is buffered. The Output Compare 1 Mode bits were set also set so that the PWM mode is set. The Capture Compare 1 Output enable and the Main Output Enable were also turned on so. Finally, the update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer. The output of this function was set to an alternate function in order to connect the timer value with the GPIO pins.</p>
+<p>For the setPitch function, the ARR register was set to 100000/inputfrequency in order to get the desired number of counts for one period of the square wave. Knowing the maximum and minimum ARR values along wtih its relationship to the input frequency, the maximum and minimum frequency ranges can be calculated.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pwmarr.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the ARR register value for the PWM output</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/maxpitch.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the maximum frequency</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/minpitch.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to find the minimum frequency</figcaption>
+</figure>
+</div>
+<p>The update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer.</p>
+</section>
+<section id="circuit-design" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-design">Circuit Design</h3>
+<p>The circuit created consisted of a 10k potentiometer that took in the output of the PWM output and inputted the voltage drop into the LM386N amplifier. The LM386N was configured so that no gain was used, and its output was fed into the an 8 Ohm speaker. This configuration allowed for the volume to be controlled by adjusting the potentiometer and to limit current drawn from the GPIO pins.</p>
+</section>
+<section id="pin-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="pin-assignment">Pin Assignment</h3>
+<table class="caption-top table">
+<caption>Pin assignment to MCU C Code</caption>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th style="text-align: left;">pin #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TIM16</td>
+<td style="text-align: left;">A6</td>
+</tr>
+<tr class="even">
+<td>TIM15</td>
+<td style="text-align: left;">A9</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematiclab4.png" class="img-fluid figure-img"></p>
+<figcaption>Full schematic with Led, Switch, and 7-segment display pin connections</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="testing-approach" class="level2">
+<h2 class="anchored" data-anchor-id="testing-approach">Testing Approach</h2>
+<p>In order to test the design, I used an oscilloscope to measure the frequency of the output pitch and the output delay. If the delay was set to 10 ms, the frequency output is expected to be 50 Hz. Using the oscilloscope, this was the value I measured. For the output frequency, I set the pitch to a value of 250 Hz, and measured the output of the timer pin. As expected, I saw a value at about 248 Hz, which matches very closely to the 250 Hz. Thus, my circuit worked as desired.</p>
+</section>
+<section id="design-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="design-requirements">Design Requirements</h2>
+<p>After testing the design on the oscilloscope and in real-life, I can confirm the design meets all specs.</p>
 
 
 </section>

@@ -1,5 +1,5 @@
 ---
-title: "Lab 3: Keypad Scanner"
+title: "Lab 4: Digital Audio"
 author: "Audrey Vo"
 date: "9/30/24"
 ---
