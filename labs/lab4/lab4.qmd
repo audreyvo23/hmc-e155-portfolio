@@ -29,7 +29,11 @@ Using the equations for the arr value, the maximum and minimum delay values coul
 ![Calculation to find the minimum delay duration](images/minarr.png)
 
 ### Pulse Width Modulator Design 
-The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. In addition, the auto-reload preload enable was set so that the ARR register is buffered. The Output Compare 1 Mode bits were set also set so that the PWM mode is set. The Capture Compare 1 Output enable and the Main Output Enable were also turned on so. Finally, the update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer. The output of this function was set to an alternate function in order to connect the timer value with the GPIO pins. 
+The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. The 100 kHz counter clock frequency ensured that our pitch output would remain within 1 percent of the desired pitch for frequencies between 220 and 1000 Hz. 
+
+![Calculation to verify the accuracy of the output frequency](images/accuracycalc.png)
+
+In addition, the auto-reload preload enable was set so that the ARR register is buffered. The Output Compare 1 Mode bits were set also set so that the PWM mode is set. The Capture Compare 1 Output enable and the Main Output Enable were also turned on so. Finally, the update generation was set so that the counter is reinitialized and the registers are updated. Lastly, the counter is then enabled for the timer. The output of this function was set to an alternate function in order to connect the timer value with the GPIO pins. 
 
 For the setPitch function, the ARR register was set to 100000/inputfrequency in order to get the desired number of counts for one period of the square wave.
 Knowing the maximum and minimum ARR values along wtih its relationship to the input frequency, the maximum and minimum frequency ranges can be calculated.
@@ -56,6 +60,8 @@ The circuit created consisted of a 10k potentiometer that took in the output of 
 
 ![Full schematic with Led, Switch, and 7-segment display pin connections](images/schematiclab4.png)
 
+## Finished Lab 
+{{< video https://www.youtube.com/watch?v=RmcU3kYlT80 >}}
 
 ## Testing Approach
 In order to test the design, I used an oscilloscope to measure the frequency of the output pitch and the output delay. If the delay was set to 10 ms, the frequency output is expected to be 50 Hz. Using the oscilloscope, this was the value I measured. For the output frequency, I set the pitch to a value of 250 Hz, and measured the output of the timer pin. As expected, I saw a value at about 248 Hz, which matches very closely to the 250 Hz. Thus, my circuit worked as desired.
