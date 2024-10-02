@@ -1,0 +1,14 @@
+---
+title: "Lab 4 Reflection"
+description: "Digital Audio"
+author: "Audrey Vo"
+date: "9/9/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+The output of this week's lab ended up being very enjoyable for me because it was fun to combine music with electronics and hear something pleasant at the end of this week. After I had completed the lab with my own song, I went around campus showing all of my friends a video of the finished lab and asked for them to guess what song was playing. However, the process of getting this lab was definitely grueling in a different way from previous labs. It was easy to get lost within the 1600 reference sheet and understand every register that needed to be turned on. At the start of the lab, I definitely felt overwhelmed. However, as I started to spend more hours going through the manual and recording my notes, I started to be more familiar with how to navigate this monstrosity of a document. I'm still not completely confident on knowing all of the registers, but I do feel more confident on how I can get that information. 
+
+As we are starting to hit the halfway mark of E155, I have been brainstorming different ideas for the final project. One idea that sparked from this lab is making a more complicated audio system that has different features. My prospective partner and I both got into DJing a little bit last year, and thought it would be really cool if we could somehow implement a basic version of a DJ deck with features such as gain control, filters, and different audios playing at once. I'd obviously want to get more feedback on this idea to understand its feasibility within the the second half of this class, but am excited where this line brainstorming will end up!
