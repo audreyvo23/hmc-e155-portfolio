@@ -9,7 +9,7 @@
 <meta name="author" content="Audrey Vo">
 <meta name="dcterms.date" content="2024-10-07">
 
-<title>lab5 – E155 Portfolio</title>
+<title>Lab 5: Interrupts – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link active" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a></li>
+  <li><a href="#main-goals" id="toc-main-goals" class="nav-link active" data-scroll-target="#main-goals">Main Goals</a></li>
+  <li><a href="#design-approach" id="toc-design-approach" class="nav-link" data-scroll-target="#design-approach">Design Approach</a>
+  <ul class="collapse">
+  <li><a href="#interrupt-design" id="toc-interrupt-design" class="nav-link" data-scroll-target="#interrupt-design">Interrupt Design</a></li>
+  <li><a href="#circuit-design" id="toc-circuit-design" class="nav-link" data-scroll-target="#circuit-design">Circuit Design</a></li>
+  <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
+  </ul></li>
+  <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a></li>
+  <li><a href="#polling-vs.-interrupt-based-code" id="toc-polling-vs.-interrupt-based-code" class="nav-link" data-scroll-target="#polling-vs.-interrupt-based-code">Polling vs.&nbsp;Interrupt-Based Code</a></li>
+  <li><a href="#design-requirements" id="toc-design-requirements" class="nav-link" data-scroll-target="#design-requirements">Design Requirements</a></li>
   </ul>
 </nav>
     </div>
@@ -162,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Lab 5: Interrupts</h1>
 </div>
 
 
@@ -190,8 +200,76 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-5-interrupts" class="level2">
-<h2 class="anchored" data-anchor-id="lab-5-interrupts">Lab 5: Interrupts</h2>
+<p>Number of Hours Spent on Lab: 12 hours</p>
+<p><a href="https://github.com/audreyvo23/e155-lab5">GitHub Lab 5 Files</a></p>
+<section id="main-goals" class="level2">
+<h2 class="anchored" data-anchor-id="main-goals">Main Goals</h2>
+<p>The main goals of this lab was to use the MCU to be able to display the velocity and direction of a motor by detecting the quadrature encoder pulses as an input. A multi-interrupt routine was implemented for the pulses returned by the encoder. This allowed for a velocity and direction to then be calculated by the results of the interrupt functions.</p>
+</section>
+<section id="design-approach" class="level2">
+<h2 class="anchored" data-anchor-id="design-approach">Design Approach</h2>
+<section id="interrupt-design" class="level3">
+<h3 class="anchored" data-anchor-id="interrupt-design">Interrupt Design</h3>
+<p>In order to design the code for the interrupts, a separate function for the Interrupt Handler was written in the main file. An External Interrupt was used to trigger the interrupt on the falling edge for the two different pulses outputted by the encoder. The two pulses were taken as an input to the MCU’s GPIO pins. A global variable was created that was updated with the time difference between the falling edge of the two inputs. The time difference was found by using a timer that counts at a speed of 1 MHz between when the interrupts are triggered. A separate timer was also created at 1 kHz to delay the printing of the motor speeds. The speed of the motor can then be found since the difference between the falling edge of the two inputs is known to be 1/4 of a pulse when it is going clockwise and 3/4 of a pulse when the motor is turning counter-clockwise.</p>
+<p>We could determine the direction that the motor was spinning by checking if the B signal was high or low when the interrupt was triggered at the ASIGNAL’s falling edge. If the BSIGNAL is high when at the falling edge of the ASIGNAL, the motor is turning clockwise. Otherwise, the motor is running counter-clockwise.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/speedcalc.png" class="img-fluid figure-img"></p>
+<figcaption>Calculation to determine the speed of the motor</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flowchart.png" class="img-fluid figure-img"></p>
+<figcaption>Flowchart of Interrupt Design</figcaption>
+</figure>
+</div>
+</section>
+<section id="circuit-design" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-design">Circuit Design</h3>
+<p>The circuit created consisted of an MCU, motor, and quadrature encoder. The pins used for this lab from MCU as inputs were verified to be 5V tolerant, and the motor was being driven by a 12V external power supply. The pins for the qudrature encoder signals were directly connected to the MCU input.</p>
+</section>
+<section id="pin-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="pin-assignment">Pin Assignment</h3>
+<table class="caption-top table">
+<caption>Pin assignment to MCU C Code</caption>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th style="text-align: left;">pin #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ASIGNAL</td>
+<td style="text-align: left;">A5</td>
+</tr>
+<tr class="even">
+<td>BSIGNAL</td>
+<td style="text-align: left;">A6</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab5schematic.png" class="img-fluid figure-img"></p>
+<figcaption>Full schematic with motor, quadrature encoder, and power supply</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="testing-approach" class="level2">
+<h2 class="anchored" data-anchor-id="testing-approach">Testing Approach</h2>
+<p>In order to test the design, I set the power supply because I knew that the expected behavior of the motor would be 10 rev/s. I also used an oscilloscope to measure the change in time of both encoder signal’s falling edge, and then solved for the speed to make sure it matched with the speed being displayed from the interrupt code.</p>
+<p><img src="images/oscilloscope.png" class="img-fluid" alt="Oscilloscope of quadrature encoder output at 12 V"> <img src="images/testingcalc.png" class="img-fluid" alt="Calculations verifying the speed of the interrupt code with the oscilloscope"></p>
+</section>
+<section id="polling-vs.-interrupt-based-code" class="level2">
+<h2 class="anchored" data-anchor-id="polling-vs.-interrupt-based-code">Polling vs.&nbsp;Interrupt-Based Code</h2>
+<p>With code that requires polling, the calculations and signal processing is done in the while loop within the main function. This can be problematic for high speed codes because each of these commands take time, while the interrupt is completed immediately. Therefore, if the code is running at high speeds, the value that polling generates may be delayed and not match the actual current expected value. In contrast, interrupts will complete the set of commands immediately, and the next line of code of will not be executed until that command is completed. Thus, we are guaranteed with interrupts that the the results generated will be up to date and accurate.</p>
+</section>
+<section id="design-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="design-requirements">Design Requirements</h2>
+<p>After testing the design on the oscilloscope and in real-life, I can confirm the design meets all specs.</p>
 
 
 </section>
