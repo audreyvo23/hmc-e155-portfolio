@@ -147,6 +147,48 @@
     "text": "Hi! My name is Audrey and I’m a current Engineering student at Harvey Mudd College.\nCurrently, I’m an APISPAM Head Sponsor, Atwood Dorm President, and Machine Shop Proctor at Harvey Mudd. The past few summers, I have been able to participate in summer research with Prof. Dodds in “Summer Start-Up” and with Prof. Gokli as part of the Riggs Fellowship. I was previously HMC 2025 Class President and also a member of the Prisoner Education Project.\nI’m currently a resident of Southern California, and have lived here my entire life. (If you have any recommendations of things to do in CA, please let me know!). In my free time, I love to play pickleball, try new foods, and spend time with friends.\nIf you are interested in learning more about me, please feel free to connect on LinkedIn."
   },
   {
+    "objectID": "labs/lab5/lab5.html",
+    "href": "labs/lab5/lab5.html",
+    "title": "Lab 5: Interrupts",
+    "section": "",
+    "text": "Number of Hours Spent on Lab: 12 hours\nGitHub Lab 5 Files"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#main-goals",
+    "href": "labs/lab5/lab5.html#main-goals",
+    "title": "Lab 5: Interrupts",
+    "section": "Main Goals",
+    "text": "Main Goals\nThe main goals of this lab was to use the MCU to be able to display the velocity and direction of a motor by detecting the quadrature encoder pulses as an input. A multi-interrupt routine was implemented for the pulses returned by the encoder. This allowed for a velocity and direction to then be calculated by the results of the interrupt functions."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#design-approach",
+    "href": "labs/lab5/lab5.html#design-approach",
+    "title": "Lab 5: Interrupts",
+    "section": "Design Approach",
+    "text": "Design Approach\n\nInterrupt Design\nIn order to design the code for the interrupts, a separate function for the Interrupt Handler was written in the main file. An External Interrupt was used to trigger the interrupt on the falling edge for the two different pulses outputted by the encoder. The two pulses were taken as an input to the MCU’s GPIO pins. A global variable was created that was updated with the time difference between the falling edge of the two inputs. The time difference was found by using a timer that counts at a speed of 1 MHz between when the interrupts are triggered. A separate timer was also created at 1 kHz to delay the printing of the motor speeds. The speed of the motor can then be found since the difference between the falling edge of the two inputs is known to be 1/4 of a pulse when it is going clockwise and 3/4 of a pulse when the motor is turning counter-clockwise.\nWe could determine the direction that the motor was spinning by checking if the B signal was high or low when the interrupt was triggered at the ASIGNAL’s falling edge. If the BSIGNAL is high when at the falling edge of the ASIGNAL, the motor is turning clockwise. Otherwise, the motor is running counter-clockwise.\n\n\n\nCalculation to determine the speed of the motor\n\n\n\n\n\nFlowchart of Interrupt Design\n\n\n\n\nCircuit Design\nThe circuit created consisted of an MCU, motor, and quadrature encoder. The pins used for this lab from MCU as inputs were verified to be 5V tolerant, and the motor was being driven by a 12V external power supply. The pins for the qudrature encoder signals were directly connected to the MCU input.\n\n\nPin Assignment\n\nPin assignment to MCU C Code\n\n\nvariable\npin #\n\n\n\n\nASIGNAL\nA5\n\n\nBSIGNAL\nA6\n\n\n\n\n\n\nFull schematic with motor, quadrature encoder, and power supply"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#testing-approach",
+    "href": "labs/lab5/lab5.html#testing-approach",
+    "title": "Lab 5: Interrupts",
+    "section": "Testing Approach",
+    "text": "Testing Approach\nIn order to test the design, I set the power supply because I knew that the expected behavior of the motor would be 10 rev/s. I also used an oscilloscope to measure the change in time of both encoder signal’s falling edge, and then solved for the speed to make sure it matched with the speed being displayed from the interrupt code."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#polling-vs.-interrupt-based-code",
+    "href": "labs/lab5/lab5.html#polling-vs.-interrupt-based-code",
+    "title": "Lab 5: Interrupts",
+    "section": "Polling vs. Interrupt-Based Code",
+    "text": "Polling vs. Interrupt-Based Code\nWith code that requires polling, the calculations and signal processing is done in the while loop within the main function. This can be problematic for high speed codes because each of these commands take time, while the interrupt is completed immediately. Therefore, if the code is running at high speeds, the value that polling generates may be delayed and not match the actual current expected value. In contrast, interrupts will complete the set of commands immediately, and the next line of code of will not be executed until that command is completed. Thus, we are guaranteed with interrupts that the the results generated will be up to date and accurate."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#design-requirements",
+    "href": "labs/lab5/lab5.html#design-requirements",
+    "title": "Lab 5: Interrupts",
+    "section": "Design Requirements",
+    "text": "Design Requirements\nAfter testing the design on the oscilloscope and in real-life, I can confirm the design meets all specs."
+  },
+  {
     "objectID": "labs/lab3/lab3.html",
     "href": "labs/lab3/lab3.html",
     "title": "Lab 3: Keypad Scanner",

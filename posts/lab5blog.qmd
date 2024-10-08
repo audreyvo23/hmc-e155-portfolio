@@ -1,0 +1,16 @@
+---
+title: "Lab 5 Reflection"
+description: "Interrupts"
+author: "Audrey Vo"
+date: "10/8/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This week was a pretty exciting week for me in my E155 career. Ever since we have been enrolling for the class, Victoria and I have been brainstroming potential final project ideas. My previous first choice was animated Harry Potter wands that could project images based on the pattern that it is waved. However, this was always a backburner because I don't think Victoria shared the same enthusiasm as I did for this project. 
+
+But this week that all changed as I was studying with her in Platt. I was inspired by our Lab 4 results and the excitement I got from being able to generate digital audio, and wondered if there was ways we could produce more complex music. That's when the idea of making a DJ deck struck me. Victoria immediately shared great excitement when I told her about that idea, and I then knew we had a winner. For context, both Victoria and I have played around with DJing amateurly with the dream of one day being able to perform for a huge party before we graduate. I think that this project could the ticket to our dream.
+
+I'm excited to see what our project can produce, and hope that we'll be mixing some sick beats in the digital lab.

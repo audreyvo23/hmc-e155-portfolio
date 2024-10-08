@@ -1,0 +1,14 @@
+---
+title: "Lab 3.5 Blog"
+description: "Keypad Scanner Continued"
+author: "Audrey Vo"
+date: "10/8/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+I used this week as a break to familiarize myself with Lab 4 since I had already completed Lab 3. It was kind of nice to have that break after a tough week, and use that extra time to either catch up with work from other classes or spend time with my friends. As I'm getting closer to that halfway mark with MicroPs, I think it's funny how much mental space I spend thinking about this class. At the end of the day, this class is an elective that I don't technically need to graduate. And yet, it's been a pattern for me to sometimes neglect the work from other classes in return for more lab time. 
+
+At times, I've found this behavior to be a blessing and a curse. It shows that I care about the class, and am determined to get the work done. Even though it may not seem like it most of the time, I do enjoy the work we have been given and think that it is very rewarding. On the other hand, I've never seen myself be so fixated on a task and wonder how this behavior translate to other parts of my life. For example, when I leave college, will I be able to balance out a strong social network with my professional career? At what point do I put my work aside, and at what times should I lock-in and continue to focus on professional progress? I don't think my relationships with people have deteriorated in any way from this class, but it's interesting how my behavior has shifted in the presence of this class.
