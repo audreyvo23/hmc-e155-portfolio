@@ -26,7 +26,7 @@ Using the equations for the arr value, the maximum and minimum delay values coul
 
 ![Calculation to find the maximum delay duration](images/maxarr.png)
 
-![Calculation to find the minimum delay duration](images/minarr.png)
+![Calculation to find the minimum delay duration](images/mindelay2.png)
 
 ### Pulse Width Modulator Design 
 The PWM design consisted of a function that initialized the PWM timer and a function that produced a square wave at the desired frequency. In the initialization funtion, the prescalar was also set to 39 in order to get a counting clock frequency of 100 kHz. The 100 kHz counter clock frequency ensured that our pitch output would remain within 1 percent of the desired pitch for frequencies between 220 and 1000 Hz. 
@@ -40,7 +40,7 @@ Knowing the maximum and minimum ARR values along wtih its relationship to the in
 
 ![Calculation to find the ARR register value for the PWM output](images/pwmarr.png)
 
-![Calculation to find the maximum frequency](images/maxpitch.png)
+![Calculation to find the maximum frequency](images/maxpitch2.png)
 
 ![Calculation to find the minimum frequency](images/minpitch.png)
 
