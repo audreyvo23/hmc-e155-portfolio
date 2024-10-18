@@ -1,0 +1,18 @@
+---
+title: "Fall Break Reflection"
+description: "Planning Our Final Project"
+author: "Audrey Vo"
+date: "10/18/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This past week I was on fall break, and used part of this break to plan out how we were going to implement our final project. Victoria and I spent the last morning of our break at the Mudd Cafe reading past projects that also used audio to see if we could use some of their implementation ideas. The Audio Synthesizer, ATLAS Project, and microphone -> audio project were the most helpful. After doing some of this research, we were both more nervous and excited for this final project. On one hand, were we biting off more than we can chew for the project? But on the other hand, how cool would it be if we could end the semester with a really cool DJ show for our friends?
+
+I think Victoria and I will be getting a lot of quality time together this semester.
+
+After doing our own personal research and reading about past projects, this did make me appreciate past Demo Days more. I had already thought that past projects were really cool, but this made me even more impressed now that I have a better understanding of how these projects were actually implemented. In the meantime, I think Vic and I are going to be youtubing homemade DJ decks and hoping that future labs will help us better understand data transfer (ex. how to implement SPI). This project is definitely going to present a new fun challenge for us that we haven't had as much with the labs: how to create our own design as opposed to just implementing. 
+
+Until next week . . .
