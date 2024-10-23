@@ -1,0 +1,14 @@
+---
+title: "Lab 6 Reflection"
+description: "The Internet of Things and Serial Peripheral Interface"
+author: "Audrey Vo"
+date: "10/22/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This week's lab was actually pretty enjoyable for me because I felt like I learned a lot and it eventually showed me how much I have grown since starting MicroPs. A lot of the initializing SPI was similar to what we have done, and I felt like I was able to understand how to do it much quicker than previously. However, I think something I still struggle with is being comfortable with an oscilloscope. Even after watching the tutorial to use the logic analyzer, I was confused on how to use it properly and was intimidated by the number of modes/buttons on the device. Although I am better as using this device than when I started the class, there is still plenty of room for me to improve. 
+
+As I'm about to enter my final lab for this class, I do feel proud of myself looking back. I definitely struggled a lot this semester, but now see a lot of the struggle as a necessary means for me to learn the amount of information I have in such a short time. There were definitely moments where I doubted my ability to complete a lot of the work assigned to us, so I'm proud of myself for still being here. I'm interested to see how Lab 7 will goes because it seems to wrap up all of the work we have been doing this semester and will connect the various lessons all together. 
