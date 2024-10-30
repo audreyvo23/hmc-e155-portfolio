@@ -9,7 +9,7 @@
 <meta name="author" content="Audrey Vo">
 <meta name="dcterms.date" content="2024-10-21">
 
-<title>lab6 – E155 Portfolio</title>
+<title>Lab 6: The Internet of Things and Serial Peripheral Interface – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-6-the-internet-of-things-and-serial-peripheral-interface" id="toc-lab-6-the-internet-of-things-and-serial-peripheral-interface" class="nav-link active" data-scroll-target="#lab-6-the-internet-of-things-and-serial-peripheral-interface">“Lab 6: The Internet of Things and Serial Peripheral Interface</a></li>
+  <li><a href="#main-goals" id="toc-main-goals" class="nav-link active" data-scroll-target="#main-goals">Main Goals</a></li>
+  <li><a href="#design-approach" id="toc-design-approach" class="nav-link" data-scroll-target="#design-approach">Design Approach</a>
+  <ul class="collapse">
+  <li><a href="#spi-design" id="toc-spi-design" class="nav-link" data-scroll-target="#spi-design">SPI Design</a></li>
+  <li><a href="#html-web-page-design" id="toc-html-web-page-design" class="nav-link" data-scroll-target="#html-web-page-design">HTML Web Page Design</a></li>
+  <li><a href="#circuit-design" id="toc-circuit-design" class="nav-link" data-scroll-target="#circuit-design">Circuit Design</a></li>
+  <li><a href="#pin-assignment" id="toc-pin-assignment" class="nav-link" data-scroll-target="#pin-assignment">Pin Assignment</a></li>
+  </ul></li>
+  <li><a href="#testing-approach" id="toc-testing-approach" class="nav-link" data-scroll-target="#testing-approach">Testing Approach</a></li>
+  <li><a href="#design-requirements" id="toc-design-requirements" class="nav-link" data-scroll-target="#design-requirements">Design Requirements</a></li>
   </ul>
 </nav>
     </div>
@@ -162,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Lab 6: The Internet of Things and Serial Peripheral Interface</h1>
 </div>
 
 
@@ -190,8 +200,91 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lab-6-the-internet-of-things-and-serial-peripheral-interface" class="level2">
-<h2 class="anchored" data-anchor-id="lab-6-the-internet-of-things-and-serial-peripheral-interface">“Lab 6: The Internet of Things and Serial Peripheral Interface</h2>
+<p>Number of Hours Spent on Lab: 20 hours</p>
+<p><a href="https://github.com/audreyvo23/e155-lab6">GitHub Lab 6 Files</a></p>
+<section id="main-goals" class="level2">
+<h2 class="anchored" data-anchor-id="main-goals">Main Goals</h2>
+<p>The main goal of this lab was to implement the SPI functionality of the MCU and interface with a temperature over an SPI link. The ESP8266 was also interfaced with the MCU over a UART link to toggle an LED on the board and display the output of the temperature sensor. These results were written on an HTML page, and allows the user to update the resolution of the temperature data displayed. Finally, a logic analyzer functionality on the oscilloscope was used to help measure outputs of the SPI data communication, and assist in any debugging.</p>
+</section>
+<section id="design-approach" class="level2">
+<h2 class="anchored" data-anchor-id="design-approach">Design Approach</h2>
+<section id="spi-design" class="level3">
+<h3 class="anchored" data-anchor-id="spi-design">SPI Design</h3>
+<p>In order to design the code for the SPI, it first needed to be initialized on the MCU. The SPI’s baud rate was set to 625 kHz in order to run slower than the clock of the temperature sensor. In addition, the data size for the communication was set to 8 bits in order to align with the data output of the sensor.</p>
+<p>A separate function was then created to transmit a byte over SPI and return its received character. This would write 8 bits of data to the data register when the transmit buffer register is empty, and return its received character when the receive buffer is no longer empty.</p>
+<p>When using SPI for the temperature sensor, it would be configured to a specific resolution based on the user input from the HTML webpage. The chip enable for the sensor was set to a GPIO output pin that would be toggled on only when SPI was transmitting data and off otherwise. Two SPI function calls were used for each read and write of the temperature sensor. When writing data, the call would first go to the write address of the temperature sensor, and then followed with the configuration information that includes the desired resolution. There were two different times needed for reading the data bits. This is because the read data from the temperature sensor is 16 bits, so it was split up into two 8-bit read calls for the MSB and LSB. Some conversion was then performed on these bits to properly display the temperature as a positive or negative number.</p>
+</section>
+<section id="html-web-page-design" class="level3">
+<h3 class="anchored" data-anchor-id="html-web-page-design">HTML Web Page Design</h3>
+<p>The HTML web page contained two separate forms. One to toggle the LED on and off, and the other to determine the resolution of the temperature sensor. Depending on what the person selects, the resolution of the temperature output would update on the webpage. The information given to the webpage would interact with the ESP8266 in order to wirelessly connect with the MCU code by using GET requests.</p>
+</section>
+<section id="circuit-design" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-design">Circuit Design</h3>
+<p>The circuit created consisted of an MCU, ESP8266, and DS1722 Digital Thermometer.</p>
+</section>
+<section id="pin-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="pin-assignment">Pin Assignment</h3>
+<table class="caption-top table">
+<caption>Pin assignment to MCU C Code</caption>
+<thead>
+<tr class="header">
+<th>variable</th>
+<th style="text-align: left;">pin #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SCLK</td>
+<td style="text-align: left;">A5</td>
+</tr>
+<tr class="even">
+<td>MISO</td>
+<td style="text-align: left;">A6</td>
+</tr>
+<tr class="odd">
+<td>CSS</td>
+<td style="text-align: left;">A8</td>
+</tr>
+<tr class="even">
+<td>TX</td>
+<td style="text-align: left;">A9</td>
+</tr>
+<tr class="odd">
+<td>RX</td>
+<td style="text-align: left;">A10</td>
+</tr>
+<tr class="even">
+<td>MOSI</td>
+<td style="text-align: left;">A12</td>
+</tr>
+<tr class="odd">
+<td>LED</td>
+<td style="text-align: left;">B3</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab6schem.png" class="img-fluid figure-img"></p>
+<figcaption>Full schematic with MCU, DS1722 Temperature Sensor, and ESP8266</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="testing-approach" class="level2">
+<h2 class="anchored" data-anchor-id="testing-approach">Testing Approach</h2>
+<p>In order to test the design, I used both the logical analyzer and debugger window. I used the logic analyzer to check if a clock signal, chip select, and the MISO and MOSI lines were sending a signal. I then checked what the values were of the MISO line to see if the value being being read seemed reasonable to the room temperature. I then used my finger to touch the sensor, and check if the temperature reading would increase when my finger was touching it and decrease when I released my finger. As you can see in the image below, the MISO line reads 16 in Hex which equals 22 degrees Celsius. This is a reasonable tempearture to be recording since it is about room temperature.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/spiscope.png" class="img-fluid figure-img"></p>
+<figcaption>Logic Analzyer Reading of SPI communication with DS1722</figcaption>
+</figure>
+</div>
+<p>I then used the debugger window to print the values that were read from the temperature sensor to see if they were properly converted into integer values of the correct resolution.</p>
+</section>
+<section id="design-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="design-requirements">Design Requirements</h2>
+<p>After testing the design on the oscilloscope and in real-life, I can confirm the design meets all specs.</p>
 
 
 </section>

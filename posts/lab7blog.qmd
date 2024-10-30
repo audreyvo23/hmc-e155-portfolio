@@ -1,0 +1,15 @@
+---
+title: "Lab 7: The Advanced Encryption Standard"
+description: "Finished LABS!!!"
+author: "Audrey Vo"
+date: "10/30/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+This week I was a little checked out (possibly senioritis) and decided to settle on a "proficient" lab. Although this did leave me a little dissatisfied by the absence of an encrypted LED, I did feel great knowing that I was done with the labs. This meant that I could spend the extra time doing other things . . . 
+
+A group of microPers have decided to celebrate the end of labs this Thursday on Halloween. We have been talking about throwing a bar opening since the beginning of the semester when we finished the labs and have the bar contain microP-themed drinks. In order to prep in the true MicroP spirit, we went to the digital lab whiteboard and started planning out our ideas. (Prof. Brake, please know you are more than welcome to join our event!) One drink will involve using a conceptual mux, and the input variables comes from the person who orders which will then output a two bit (or ingredient) cocktail. Another drink idea was to incorporate SPI by consuming various ingredients one-by-one (ex. salt tequila lime). I'm excited to see who will show up to this bar opening and how the drinks are received by the non-microPers who are there to celebrate with us. I'll be sure to include pictures later after the event and also include a review of the night went
+ 
