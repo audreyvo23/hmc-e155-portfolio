@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "E155 Blog",
     "section": "",
-    "text": "Lab 6 Reflection\n\n\n\n\n\nThe Internet of Things and Serial Peripheral Interface\n\n\n\n\n\nOct 22, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nFall Break Reflection\n\n\n\n\n\nPlanning Our Final Project\n\n\n\n\n\nOct 18, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 Reflection\n\n\n\n\n\nInterrupts\n\n\n\n\n\nOct 8, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3.5 Blog\n\n\n\n\n\nKeypad Scanner Continued\n\n\n\n\n\nOct 8, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 Reflection\n\n\n\n\n\nDigital Audio\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 Reflection\n\n\n\n\n\nKeypad Scanner\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 Reflection\n\n\n\n\n\nMultiplexed 7-Segment Display\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 Reflection\n\n\n\n\n\nFPGA and MCU Setup and Testing\n\n\n\n\n\nSep 5, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Blog Post\n\n\n\n\n\nMy Learning Goals for this Class\n\n\n\n\n\nAug 27, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\nNo matching items"
+    "text": "Lab 7: The Advanced Encryption Standard\n\n\n\n\n\nFinished LABS!!!\n\n\n\n\n\nOct 30, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 6 Reflection\n\n\n\n\n\nThe Internet of Things and Serial Peripheral Interface\n\n\n\n\n\nOct 22, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nFall Break Reflection\n\n\n\n\n\nPlanning Our Final Project\n\n\n\n\n\nOct 18, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 Reflection\n\n\n\n\n\nInterrupts\n\n\n\n\n\nOct 8, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3.5 Blog\n\n\n\n\n\nKeypad Scanner Continued\n\n\n\n\n\nOct 8, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 Reflection\n\n\n\n\n\nDigital Audio\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 Reflection\n\n\n\n\n\nKeypad Scanner\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 Reflection\n\n\n\n\n\nMultiplexed 7-Segment Display\n\n\n\n\n\nSep 9, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 Reflection\n\n\n\n\n\nFPGA and MCU Setup and Testing\n\n\n\n\n\nSep 5, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Blog Post\n\n\n\n\n\nMy Learning Goals for this Class\n\n\n\n\n\nAug 27, 2024\n\n\nAudrey Vo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -313,5 +313,47 @@
     "title": "Resources",
     "section": "",
     "text": "E155 Website"
+  },
+  {
+    "objectID": "labs/lab7/lab7.html",
+    "href": "labs/lab7/lab7.html",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "",
+    "text": "Number of Hours Spent on Lab: 25 hours\nGitHub Lab 7 Files"
+  },
+  {
+    "objectID": "labs/lab7/lab7.html#main-goals",
+    "href": "labs/lab7/lab7.html#main-goals",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "Main Goals",
+    "text": "Main Goals\nThe main goal of this lab was to build a system on an FPGA that can fit on the chip. An interface was also designed and implemented to allow for communication betweent the FPGA and MCU. Finally, a hardware accelerator was created to perform 128-bit AES encryption where a plaintext message key was being sent from the MCU to the accelerator and back."
+  },
+  {
+    "objectID": "labs/lab7/lab7.html#design-approach",
+    "href": "labs/lab7/lab7.html#design-approach",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "Design Approach",
+    "text": "Design Approach\n\nAES Encryption Design\nIn order to create subBytes, sbox_sync was used to alter the input bits. Sbox_sync was used instead of sbox in order to store the LUT in RAM memory since a 16x16 would have been too large to store within our local memory. Sbox_sync was then called 16x on the 8 different rows of bytes of plaintext inputted to it, and allowed SubBytes to then output the 128 bits of modified text which was then fed into the shiftRows, mixColumns, and addRoundKey. In order to create the subModule keyExpansion, submodules rotWord and subWord were used to correctly output the roundKey values. These values were then also passed into addRoundkey to get the new cyphertext and into keyExpansion to get the new set of roundKey values. The design ensured that the modules would would go through the four submodules for a total of 9 times, only go through subByte, shiftRows, and addRoundKey for the 10th time, and then output the cyphertext. Below shows the path of the 128-bit AES encryption path and the Block Diagram of the modules used to implement this.\n\n\n\nFull Path for 128-bit AES Encryption\n\n\n\n\n\nFull Block Diagram of 128-bit AES Encryption System\n\n\n\n\nFSM Design\nIn order to connect the submodules for the Encryption Design, an FSM was designed to determine what information should be passed to the AES submodules during each clock cycle. It was also used to determine the number of rounds the cyphertext had been encrypted, so that it would know when it is done. A delay was implemented between each submodule in the form of an extra state to take into account any clock delays from calling sbox_sync in keyExpansion and subByte.\n\n\n\nFSM Design for 128-bit AES Encryption Process\n\n\n\n\nPin Assignment\n\n\n\nFPGA\npin #\n\n\n\n\nSDO\n12\n\n\nSDI\n10\n\n\nSCLK\n21\n\n\nLOAD\n26\n\n\nDONE\n27\n\n\n\n\nPin assignment to FPGA System Verilog Code and MCU C Code\n\n\nMCU\npin #\n\n\n\n\nMISO\nB4\n\n\nMOSI\nB5\n\n\nSCLK\nB3\n\n\nLOAD\nA5\n\n\nDONE\nA6\n\n\n\n\n\n\nHardware Schematic for FPGA and MCU"
+  },
+  {
+    "objectID": "labs/lab7/lab7.html#testing-approach",
+    "href": "labs/lab7/lab7.html#testing-approach",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "Testing Approach",
+    "text": "Testing Approach\nIn order to test the design, the System Verilog code was opened in ModelSim. A set of additional testbench files in System Verilog were created to test each of the submodules’s functionality.\nThe subByte module, shiftRows module, keyExpansion module, and addRoundkey module were tested individually with known inputs and outputs. Once all of waveforms outputted matched the expected, a testbench for aes_core was then used to test the FSM design. As you can see below, the outputs of the aes_core testbench and aes_spi testbench were successful because it returned the expected values.\n\n\n\nTestbench output for SubByte Module\n\n\n\n\n\nTestbench output for ShiftRows Module\n\n\n\n\n\nTestbench output for KeyExpansion Module\n\n\n\n\n\nTestbench output for AddRoundKey Module\n\n\n\n\n\nTestbench output for AES Core Module\n\n\n\n\n\nTestbench output for AES SPI Module"
+  },
+  {
+    "objectID": "labs/lab7/lab7.html#design-requirements",
+    "href": "labs/lab7/lab7.html#design-requirements",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "Design Requirements",
+    "text": "Design Requirements\nAfter testing the design in ModelSim, I can confirm the design meets all specs."
+  },
+  {
+    "objectID": "posts/lab7blog.html",
+    "href": "posts/lab7blog.html",
+    "title": "Lab 7: The Advanced Encryption Standard",
+    "section": "",
+    "text": "This week I was a little checked out (possibly senioritis) and decided to settle on a “proficient” lab. Although this did leave me a little dissatisfied by the absence of an encrypted LED, I did feel great knowing that I was done with the labs. This meant that I could spend the extra time doing other things . . .\nA group of microPers have decided to celebrate the end of labs this Thursday on Halloween. We have been talking about throwing a bar opening since the beginning of the semester when we finished the labs and have the bar contain microP-themed drinks. In order to prep in the true MicroP spirit, we went to the digital lab whiteboard and started planning out our ideas. (Prof. Brake, please know you are more than welcome to join our event!) One drink will involve using a conceptual mux, and the input variables comes from the person who orders which will then output a two bit (or ingredient) cocktail. Another drink idea was to incorporate SPI by consuming various ingredients one-by-one (ex. salt tequila lime). I’m excited to see who will show up to this bar opening and how the drinks are received by the non-microPers who are there to celebrate with us. I’ll be sure to include pictures later after the event and also include a review of the night went"
   }
 ]
