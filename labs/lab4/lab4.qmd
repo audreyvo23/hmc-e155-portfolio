@@ -40,7 +40,7 @@ Knowing the maximum and minimum ARR values along wtih its relationship to the in
 
 ![Calculation to find the ARR register value for the PWM output](images/pwmarr.png)
 
-![Calculation to find the maximum frequency](images/maxpitch2.png)
+![Calculation to find the maximum frequency](images/lab4maxpitch.png)
 
 ![Calculation to find the minimum frequency](images/minpitch.png)
 
